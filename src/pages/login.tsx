@@ -268,12 +268,11 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Right side - Image/Info */}
         <div className="hidden lg:block lg:w-1/2 bg-[#f0f5fa]">
           <div className="h-full flex flex-col justify-center items-center px-12">
             <div className="max-w-lg">
               <img
-                src="/analytics-dashboard.png"
+                src="/first.webp"
                 alt="Analytics Dashboard"
                 className="w-full h-auto mb-8"
               />

@@ -4,44 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { isValidUrl } from "@/lib/utils";
-import {
-  FiArrowRight,
-  FiLink,
-  FiEdit,
-  FiBook,
-  FiHelpCircle,
-  FiInfo,
-  FiCode,
-  FiMessageSquare,
-  FiTarget,
-  FiBarChart2,
-  FiFileText,
-  FiShoppingBag,
-  FiBriefcase,
-  FiServer,
-  FiCreditCard,
-  FiHash,
-  FiSmartphone,
-  FiGlobe,
-  FiImage,
-  FiPackage,
-  FiPrinter,
-  FiMonitor,
-  FiShare2,
-  FiCheck,
-  FiUsers,
-} from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function Home() {
   const router = useRouter();
   const [url, setUrl] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  // States for dropdown menus
-  const [showPlatformMenu, setShowPlatformMenu] = useState<boolean>(false);
-  const [showSolutionsMenu, setShowSolutionsMenu] = useState<boolean>(false);
-  const [showResourcesMenu, setShowResourcesMenu] = useState<boolean>(false);
 
   const handleShorten = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,13 +149,8 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-4">
-            {/* Platform Dropdown */}
             <div className="relative group">
-              <button
-                className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center"
-                onMouseEnter={() => setShowPlatformMenu(true)}
-                onMouseLeave={() => setShowPlatformMenu(false)}
-              >
+              <button className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center">
                 Platform
                 <svg
                   className="ml-1 h-4 w-4"
@@ -202,226 +166,10 @@ export default function Home() {
                   />
                 </svg>
               </button>
-
-              {showPlatformMenu && (
-                <div
-                  className="absolute left-0 right-0 w-full mt-2 bg-white rounded-none border-t-4 border-[#EE6123] shadow-lg p-0 z-20"
-                  style={{ top: "40px" }}
-                  onMouseEnter={() => setShowPlatformMenu(true)}
-                  onMouseLeave={() => setShowPlatformMenu(false)}
-                >
-                  <div className="max-w-7xl mx-auto flex p-4">
-                    <div className="w-2/3 border-r border-gray-200 pr-8">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        PRODUCTS
-                      </h2>
-                      <div className="grid grid-cols-2 gap-6">
-                        <Link
-                          href="/url-shortener"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiLink className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              URL Shortener
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Customize, share and track links
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/qr-codes"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiHash className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              QR Code Generator
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Dynamic solutions to fit every business need
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/2d-barcodes"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiPackage className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              2D Barcodes
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Add a Global Trade Number (GTIN) to QR Codes
-                              designed for packaging
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/analytics"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiBarChart2 className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">Analytics</span>
-                            <span className="block text-sm text-gray-500">
-                              A central place to track and analyze performance
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/pages"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiFileText className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">Pages</span>
-                            <span className="block text-sm text-gray-500">
-                              Mobile-friendly, no-code landing pages
-                            </span>
-                          </div>
-                        </Link>
-                      </div>
-
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3 mt-8">
-                        FEATURES
-                      </h2>
-                      <div className="grid grid-cols-2 gap-6">
-                        <Link
-                          href="/link-in-bio"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiFileText className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              Link-in-bio
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Curate and track links and content for social
-                              media profiles
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/branded-links"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiLink className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              Branded Links
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Customize links with your brand's URL
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/mobile-links"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiSmartphone className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              Mobile Links
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Short links for SMS messages
-                            </span>
-                          </div>
-                        </Link>
-                        <Link
-                          href="/utm-campaigns"
-                          className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiTarget className="w-6 h-6 mt-1 text-gray-700" />
-                          <div>
-                            <span className="block font-medium">
-                              UTM Campaigns
-                            </span>
-                            <span className="block text-sm text-gray-500">
-                              Track links and QR Codes with UTM parameters
-                            </span>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="w-1/3 pl-8">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        INTEGRATIONS
-                      </h2>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="border border-gray-200 p-4 rounded">
-                          <img
-                            src="/hubspot-logo.png"
-                            alt="HubSpot"
-                            className="h-10 w-auto mb-2"
-                            onError={(e) => {
-                              e.currentTarget.src =
-                                "https://via.placeholder.com/100x40?text=HubSpot";
-                            }}
-                          />
-                          <span className="text-sm text-gray-700">
-                            Bitly HubSpot Connector
-                          </span>
-                        </div>
-                        <div className="border border-gray-200 p-4 rounded">
-                          <img
-                            src="/canva-logo.png"
-                            alt="Canva"
-                            className="h-10 w-auto mb-2"
-                            onError={(e) => {
-                              e.currentTarget.src =
-                                "https://via.placeholder.com/100x40?text=Canva";
-                            }}
-                          />
-                          <span className="text-sm text-gray-700">
-                            Bitly + Canva Integration
-                          </span>
-                        </div>
-                      </div>
-
-                      <Link
-                        href="/integrations"
-                        className="mt-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
-                      >
-                        See all integrations
-                        <FiArrowRight className="ml-1" />
-                      </Link>
-
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3 mt-6">
-                        DISCOVER MORE
-                      </h2>
-                      <Link
-                        href="/api-documentation"
-                        className="flex items-center text-blue-600 hover:text-blue-800 font-medium my-2"
-                      >
-                        API & Documentation
-                        <FiArrowRight className="ml-1" />
-                      </Link>
-                      <Link
-                        href="/trust-center"
-                        className="flex items-center text-blue-600 hover:text-blue-800 font-medium my-2"
-                      >
-                        Trust Center
-                        <FiArrowRight className="ml-1" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
-            {/* Solutions Dropdown */}
             <div className="relative group">
-              <button
-                className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center"
-                onMouseEnter={() => setShowSolutionsMenu(true)}
-                onMouseLeave={() => setShowSolutionsMenu(false)}
-              >
+              <button className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center">
                 Solutions
                 <svg
                   className="ml-1 h-4 w-4"
@@ -437,201 +185,6 @@ export default function Home() {
                   />
                 </svg>
               </button>
-
-              {showSolutionsMenu && (
-                <div
-                  className="absolute left-0 right-0 w-full mt-2 bg-white rounded-none border-t-4 border-[#EE6123] shadow-lg p-0 z-20"
-                  style={{ top: "40px" }}
-                  onMouseEnter={() => setShowSolutionsMenu(true)}
-                  onMouseLeave={() => setShowSolutionsMenu(false)}
-                >
-                  <div className="max-w-7xl mx-auto flex p-4">
-                    <div className="w-1/3 border-r border-gray-200 pr-8">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        BY INDUSTRY
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4">
-                        <Link
-                          href="/industries/retail"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiShoppingBag className="mr-2 text-gray-700" />
-                          <span>Retail</span>
-                        </Link>
-                        <Link
-                          href="/industries/hospitality"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiBriefcase className="mr-2 text-gray-700" />
-                          <span>Hospitality</span>
-                        </Link>
-                        <Link
-                          href="/industries/technology"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiServer className="mr-2 text-gray-700" />
-                          <span>Technology Software & Hardware</span>
-                        </Link>
-                        <Link
-                          href="/industries/insurance"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiGlobe className="mr-2 text-gray-700" />
-                          <span>Insurance</span>
-                        </Link>
-                        <Link
-                          href="/industries/professional-services"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiBriefcase className="mr-2 text-gray-700" />
-                          <span>Professional Services</span>
-                        </Link>
-                        <Link
-                          href="/industries/cpg"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiPackage className="mr-2 text-gray-700" />
-                          <span>Consumer Packaged Goods</span>
-                        </Link>
-                        <Link
-                          href="/industries/media"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiImage className="mr-2 text-gray-700" />
-                          <span>Media & Entertainment</span>
-                        </Link>
-                        <Link
-                          href="/industries/healthcare"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiHelpCircle className="mr-2 text-gray-700" />
-                          <span>Healthcare</span>
-                        </Link>
-                        <Link
-                          href="/industries/financial"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiCreditCard className="mr-2 text-gray-700" />
-                          <span>Financial Services</span>
-                        </Link>
-                        <Link
-                          href="/industries/education"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiBook className="mr-2 text-gray-700" />
-                          <span>Education</span>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="w-1/3 border-r border-gray-200 px-8">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        BY TEAM
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4 mb-8">
-                        <Link
-                          href="/teams/developers"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiCode className="mr-2 text-gray-700" />
-                          <span>Developers</span>
-                        </Link>
-                        <Link
-                          href="/teams/marketing"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiTarget className="mr-2 text-gray-700" />
-                          <span>Marketing</span>
-                        </Link>
-                        <Link
-                          href="/teams/customer-service"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiMessageSquare className="mr-2 text-gray-700" />
-                          <span>Customer Service</span>
-                        </Link>
-                      </div>
-
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        BY BUSINESS
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4">
-                        <Link
-                          href="/business/small-business"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiShoppingBag className="mr-2 text-gray-700" />
-                          <span>Small Business</span>
-                        </Link>
-                        <Link
-                          href="/business/midmarket"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiBarChart2 className="mr-2 text-gray-700" />
-                          <span>Midmarket</span>
-                        </Link>
-                        <Link
-                          href="/business/enterprise"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiServer className="mr-2 text-gray-700" />
-                          <span>Enterprise</span>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="w-1/3 pl-8">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        USE CASES
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4">
-                        <Link
-                          href="/use-cases/order-confirmation"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiCheck className="mr-2 text-gray-700" />
-                          <span>Order Confirmation</span>
-                        </Link>
-                        <Link
-                          href="/use-cases/surveys"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiUsers className="mr-2 text-gray-700" />
-                          <span>Surveys and Feedback</span>
-                        </Link>
-                        <Link
-                          href="/use-cases/product-packaging"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiPackage className="mr-2 text-gray-700" />
-                          <span>Product Packaging</span>
-                        </Link>
-                        <Link
-                          href="/use-cases/print-advertising"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiPrinter className="mr-2 text-gray-700" />
-                          <span>Print Advertising</span>
-                        </Link>
-                        <Link
-                          href="/use-cases/digital-advertising"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiMonitor className="mr-2 text-gray-700" />
-                          <span>Digital Advertising</span>
-                        </Link>
-                        <Link
-                          href="/use-cases/content-sharing"
-                          className="flex items-center text-gray-700 hover:text-[#EE6123]"
-                        >
-                          <FiShare2 className="mr-2 text-gray-700" />
-                          <span>Content Sharing</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             <Link
@@ -641,13 +194,8 @@ export default function Home() {
               Pricing
             </Link>
 
-            {/* Resources dropdown */}
             <div className="relative group">
-              <button
-                className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center"
-                onMouseEnter={() => setShowResourcesMenu(true)}
-                onMouseLeave={() => setShowResourcesMenu(false)}
-              >
+              <button className="text-white hover:text-gray-300 py-2 px-3 font-medium flex items-center">
                 Resources
                 <svg
                   className="ml-1 h-4 w-4"
@@ -663,175 +211,26 @@ export default function Home() {
                   />
                 </svg>
               </button>
-
-              {showResourcesMenu && (
-                <div
-                  className="absolute left-0 right-0 w-full mt-2 bg-white rounded-none border-t-4 border-[#EE6123] shadow-lg p-0 z-20"
-                  style={{ top: "40px" }}
-                  onMouseEnter={() => setShowResourcesMenu(true)}
-                  onMouseLeave={() => setShowResourcesMenu(false)}
-                >
-                  <div className="max-w-7xl mx-auto flex p-4 text-left">
-                    <div className="flex-1 px-4">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        LEARN MORE
-                      </h2>
-                      <ul className="space-y-4">
-                        <li>
-                          <Link
-                            href="/blog"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiEdit className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">Blog</span>
-                              <span className="block text-sm text-gray-500">
-                                Get the latest trends, tips, and best practices
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/guides"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiBook className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                Guides & eBooks
-                              </span>
-                              <span className="block text-sm text-gray-500">
-                                Dig into in-depth resources and expert insights
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                      </ul>
-
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3 mt-8">
-                        FIND ANSWERS
-                      </h2>
-                      <ul className="space-y-4">
-                        <li>
-                          <Link
-                            href="/help"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiHelpCircle className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                Help Center
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/trust"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiInfo className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                Trust Center
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/developer"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiCode className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                Developers
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex-1 px-4">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        GET INSPIRED
-                      </h2>
-                      <ul className="space-y-4">
-                        <li>
-                          <Link
-                            href="/customer-stories"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiMessageSquare className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                Customer Stories
-                              </span>
-                              <span className="block text-sm text-gray-500">
-                                Explore success stories from Bitly customers
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/qr-inspiration"
-                            className="flex items-start space-x-3 text-gray-700 hover:text-[#EE6123]"
-                          >
-                            <FiTarget className="w-6 h-6 mt-1 text-gray-700" />
-                            <div>
-                              <span className="block font-medium">
-                                QR Code Inspiration Gallery
-                              </span>
-                              <span className="block text-sm text-gray-500">
-                                Check out QR Code examples for every industry
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex-1 px-4">
-                      <h2 className="text-gray-500 font-medium uppercase tracking-wide text-sm mb-3">
-                        WHAT'S NEW
-                      </h2>
-                      <div className="bg-blue-50 rounded-lg p-4">
-                        <img
-                          src="/qr-webinar.png"
-                          alt="QR Codes Webinar"
-                          className="w-full h-auto mb-4 rounded"
-                          onError={(e) => {
-                            e.currentTarget.src =
-                              "https://via.placeholder.com/300x200/e0f2fe/0369a1?text=QR+Codes+Webinar";
-                          }}
-                        />
-                        <h3 className="text-gray-800 font-medium mb-1">
-                          WEBINAR
-                        </h3>
-                        <h4 className="text-gray-800 font-bold text-lg mb-2">
-                          QR Codes and the Future of Retail Webinar Recap
-                        </h4>
-                        <Link
-                          href="/webinar"
-                          className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
-                        >
-                          Watch Now
-                          <FiArrowRight className="ml-1" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </nav>
 
           <div className="flex items-center space-x-3">
             <div className="hidden md:flex items-center mr-2">
               <button className="text-white flex items-center">
-                <FiGlobe className="w-5 h-5 mr-1" />
+                <svg
+                  className="w-5 h-5 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
                 EN
                 <svg
                   className="ml-1 h-4 w-4"
@@ -937,18 +336,44 @@ export default function Home() {
               {/* Feature Pills */}
               <div className="flex flex-wrap justify-center gap-3 mt-10 mb-12">
                 <div className="bg-white rounded-full py-3 px-6 flex items-center space-x-2">
-                  <FiLink className="w-6 h-6 text-[#EE6123]" />
+                  <svg
+                    className="w-6 h-6 text-[#EE6123]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    />
+                  </svg>
                   <span className="font-medium text-[#0c2c4d]">Short link</span>
                 </div>
 
                 <div className="bg-transparent py-3 px-6 flex items-center space-x-2">
-                  <FiHash className="w-6 h-6 text-[#EE6123]" />
+                  <svg
+                    className="w-6 h-6 text-[#EE6123]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
+                    />
+                  </svg>
                   <span className="font-medium text-white">QR Code</span>
                 </div>
               </div>
 
               {/* URL Shortening Form */}
-              <div className="bg-white rounded-lg p-8 shadow-xl max-w-3xl mx-auto">
+              <div className="bg-white rounded-4xl p-8 shadow-xl max-w-3xl mx-auto">
                 <h2 className="text-2xl font-bold text-[#0c2c4d] mb-1 text-left">
                   Shorten a long link
                 </h2>
@@ -1014,7 +439,24 @@ export default function Home() {
                       ) : (
                         <div className="flex items-center ">
                           <span>Get your link for free</span>
-                          <FiArrowRight className="ml-2 w-5 h-5" />
+                          <span className="ml-2">
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="text-white"
+                            >
+                              <path
+                                d="M5 12H19M19 12L12 5M19 12L12 19"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
                         </div>
                       )}
                     </button>

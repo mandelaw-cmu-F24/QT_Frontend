@@ -282,11 +282,11 @@ export default function Register() {
         <div className="hidden lg:block lg:w-1/2 bg-[#f0f5fa]">
           <div className="h-full flex flex-col justify-center items-center px-12">
             <div className="max-w-lg">
-              <img
+              {/* <img
                 src="/qr-code-display.png"
                 alt="QR Code example"
                 className="w-full h-auto mb-8"
-              />
+              /> */}
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
                 Power your links, QR Codes, and landing pages with Bitly's
                 Connections Platform.
